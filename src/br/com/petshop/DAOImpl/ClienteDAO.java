@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ArrayBlockingQueue;
 
 import br.com.petshop.DAO.InterfaceDAO;
 import br.com.petshop.modelo.Pessoa;
@@ -34,7 +33,7 @@ public class ClienteDAO implements InterfaceDAO<Pessoa>{
 			stmt.setString(1, cliente.getNome());
 			stmt.setString(2, cliente.getCpf());
 			stmt.setString(3, cliente.getTelefone());
-			stmt.setString(3, cliente.getEmail());
+			stmt.setString(4, cliente.getEmail());
 			
 			stmt.execute();
 			
@@ -49,7 +48,11 @@ public class ClienteDAO implements InterfaceDAO<Pessoa>{
 	@Override
 	public void deleta(Integer id) {
 		PreparedStatement stmt = null;
+		PreparedStatement stmtAnimal = null;
 		try {
+			stmtAnimal = con.prepareStatement(SQL.REMOVE_ANIMAL_ID_DONO);
+			stmtAnimal.setInt(1, id);
+			stmtAnimal.execute();
 			stmt = con.prepareStatement(SQL.REMOVE_PESSOA);
 			stmt.setInt(1, id);
 			stmt.execute();
@@ -62,7 +65,7 @@ public class ClienteDAO implements InterfaceDAO<Pessoa>{
 	}
 
 	@Override
-	public List<Pessoa> recuperaTodos() {
+	public List<Pessoa> buscaTodos() {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		List <Pessoa> lista = new ArrayList<>();
@@ -71,7 +74,6 @@ public class ClienteDAO implements InterfaceDAO<Pessoa>{
 			rs = stmt.executeQuery();
 			while (rs.next()){
 				Pessoa pessoa = new Pessoa();
-				
 				pessoa.setIdCliente(rs.getInt("cliente_id"));
 				pessoa.setNome(rs.getString("nome"));
 				pessoa.setCpf(rs.getString("cpf"));
@@ -91,7 +93,7 @@ public class ClienteDAO implements InterfaceDAO<Pessoa>{
 	}
 
 	@Override
-	public Pessoa recupera(Integer id) {
+	public Pessoa busca(Integer id) {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		Pessoa pessoa = new Pessoa();
@@ -99,14 +101,14 @@ public class ClienteDAO implements InterfaceDAO<Pessoa>{
 			
 			stmt =con.prepareStatement(SQL.CONSULTA_PESSOA_ID);
 			stmt.setInt(1, id);
-			rs = stmt.executeQuery()
-					;
+			rs = stmt.executeQuery();
+			if (rs.next()){
 				pessoa.setIdCliente(rs.getInt("cliente_id"));
 				pessoa.setNome(rs.getString("nome"));
 				pessoa.setCpf(rs.getString("cpf"));
 				pessoa.setEmail(rs.getString("email"));
 				pessoa.setTelefone(rs.getString("telefone"));
-
+			}
 		} catch (Exception e) {
 			System.out.println("Erro ao buscar os clientes");
 			e.printStackTrace();
@@ -117,7 +119,7 @@ public class ClienteDAO implements InterfaceDAO<Pessoa>{
 	return pessoa;
 	}
 	
-	public Pessoa recuperaCPF(Integer cpf) {
+	public Pessoa buscaCPF(Integer cpf) {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		Pessoa pessoa = new Pessoa();
@@ -125,14 +127,14 @@ public class ClienteDAO implements InterfaceDAO<Pessoa>{
 			
 			stmt =con.prepareStatement(SQL.CONSULTA_PESSOA_CPF);
 			stmt.setInt(1, cpf);
-			rs = stmt.executeQuery()
-					;
+			rs = stmt.executeQuery();
+			if(rs.next()){
 				pessoa.setIdCliente(rs.getInt("cliente_id"));
 				pessoa.setNome(rs.getString("nome"));
 				pessoa.setCpf(rs.getString("cpf"));
 				pessoa.setEmail(rs.getString("email"));
 				pessoa.setTelefone(rs.getString("telefone"));
-
+			}
 		} catch (Exception e) {
 			System.out.println("Erro ao buscar os clientes");
 			e.printStackTrace();

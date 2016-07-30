@@ -4,13 +4,13 @@ public class SQL {
 
 	//CRUD PESSOA
 	public static final String
-	INSERE_PESSOA = "INSERT INTO petshop.cliente( nome, cpf, telefone, email) values (?, ?, ?, ?)";
+	INSERE_PESSOA = "INSERT INTO cliente( nome, cpf, telefone, email) VALUES (?, ?, ?, ?)";
 	public static final String
-	REMOVE_PESSOA ="DELETE FROM petshop.cliente WHERE cliente_id = ?";
+	REMOVE_PESSOA ="DELETE FROM cliente WHERE cliente_id = ?";
 	public static final String
 	CONSULTA_TODOS_CONTATOS = "SELECT cliente_id, nome, cpf, telefone, email FROM petshop.cliente";
 	public static final String
-	CONSULTA_PESSOA_ID = "SELECT cliente_id, nome, cpf, telefone, email FROM petshop.cliente WHERE cliente_id = ?";
+	CONSULTA_PESSOA_ID = "SELECT cliente_id, nome, cpf, telefone, email FROM cliente WHERE cliente_id = ?";
 	public static final String
 	CONSULTA_PESSOA_CPF = "SELECT cliente_id, nome, cpf, telefone, email FROM petshop.cliente WHERE cpf = ?";
 	
@@ -19,6 +19,8 @@ public class SQL {
 	INSERE_ANIMAL = "INSERT INTO petshop.animal (nome, id_dono, id_tipo_animal) VALUES (?,?,?)";
 	public static final String
 	REMOVE_ANIMAL = "DELETE FROM petshop.animal WHERE animal_id = ?";
+	public static final String
+	REMOVE_ANIMAL_ID_DONO = "DELETE FROM animal WHERE id_dono = ?";
 	public static final String
 	CONSULTA_TODOS_ANIMAL= "SELECT animal_id, nome, id_dono, id_tipo_animal FROM petshop.animal";
 	public static final String

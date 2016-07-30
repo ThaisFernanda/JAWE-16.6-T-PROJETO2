@@ -2,7 +2,7 @@ package br.com.petshop.DAO;
 
 import java.util.List;
 
-public interface InteraceDAO <T> {
+public interface InterfaceDAO <T> {
 	
 	public void insere (T obj);
 	

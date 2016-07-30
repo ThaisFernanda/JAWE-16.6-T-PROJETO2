@@ -1,8 +1,7 @@
 package br.com.petshop.util;
 
 public class SQL {
-	
-	
+
 	//CRUD PESSOA
 	public static final String
 	INSERE_PESSOA = "INSERT INTO petshop.cliente( nome, cpf, telefone, email) values (?, ?, ?, ?)";

@@ -10,8 +10,8 @@ public class ConstantesSistema {
 	public static final String MSG_ERRO_CONNECTION_0002 = "002 - Erro ao tentar criar uma nova conexao - Erro";
 	
 	//ERROS DAO
-	public static final String MSG_ERRO_DAO_0001 = "001 - Erro ao tentar BUSCAR POR ID - Erro";
-	public static final String MSG_ERRO_DAO_0002 = "002 - Erro ao tentar BUSCAR TODOS - Erro";
+	public static final String MSG_ERRO_BUSCAR_ID = "001 - Erro ao tentar BUSCAR POR ID - Erro";
+	public static final String MSG_ERRO_BUSCA_TODOS = "002 - Erro ao tentar BUSCAR TODOS - Erro";
 	public static final String MSG_ERRO_INSERIR = "003 - Erro ao tentar INSERIR - Erro";
 	public static final String MSG_ERRO_DELETAR = "004 - Erro ao tentar REMOVER - Erro";
 	

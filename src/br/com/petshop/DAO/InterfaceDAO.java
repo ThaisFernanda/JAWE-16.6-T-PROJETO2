@@ -10,8 +10,8 @@ public interface InterfaceDAO <T> {
 	
 	public void deleta (Integer id);
 	
-	public List<T> recuperaTodos();
+	public List<T> buscaTodos();
 	
-	public T recupera (Integer id);
+	public T busca (Integer id);
 	
 }

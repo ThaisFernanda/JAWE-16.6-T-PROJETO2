@@ -6,7 +6,7 @@ public interface InterfaceDAO <T> {
 	
 	public void insere (T obj);
 	
-	public void update (T obj);
+	//public void update (T obj);
 	
 	public void deleta (Integer id);
 	
